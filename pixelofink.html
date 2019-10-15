@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Podcast Speed Calculator</title>
+</head>
+<style>
+    body{
+        padding-top: 70px;
+    }
+    .rightbox{
+        text-align: right;
+    }
+    .result{
+        display:none;
+    }
+    @media (max-width:1110px) {
+        .result{
+            text-align: center !important;
+            
+        }
+        .resultright{
+            text-align: left !important;
+        }
+        .rightbox{
+            text-align: left !important;
+        }
+        .leftbox{
+            text-align: right !important;
+        }
+    }
+
+
+body{
+
+/* perspective:600px; */
+
+background-color: #DEF;
+
+}
+
+/* div{
+
+margin: 200px auto;
+
+width:250px;
+
+} */
+
+span{
+
+width:20px;
+
+height:30px;
+
+margin-left: 1px;
+
+background-color: #ACF;
+
+display: inline-block;
+
+transform-style:preserve-3d;
+
+animation: music 1.5s infinite ease-in-out;
+
+}
+
+span:nth-of-type(2){
+
+animation-delay: 0.2s;    
+
+}
+
+span:nth-of-type(3){
+
+animation-delay: .4s;
+
+}
+
+span:nth-of-type(4){
+
+animation-delay: .6s;
+
+}
+
+span:nth-of-type(5){
+
+animation-delay:.8s;
+
+}
+
+span:nth-of-type(6){
+
+animation-delay:1s;
+
+}
+
+span:nth-of-type(7){
+
+animation-delay:1.2s;
+
+}
+
+span:nth-of-type(8){
+
+animation-delay:1.4s;
+
+}
+
+span:nth-of-type(9){
+
+animation-delay:1.6s;
+
+}
+
+span:last-of-type{
+
+animation-delay: 1.8s;
+
+}
+
+@keyframes music{
+
+0%{
+
+    height: 50px;
+
+    background-color: #135;
+
+}
+
+
+
+25%{
+
+height:75px;
+
+transform:translateZ(30px);
+
+background-color: #963;
+
+}
+
+
+
+50%{
+
+    height: 100px;
+
+    background-color: #246;
+
+}
+
+75%{
+
+    background-color: #135;
+
+}
+
+    
+
+}
+</style>
+<body>
+    <div id="" class="container">
+            <h1 >Podcast Speed Calculator</h1>
+            <p>For people who really want to know...
+                </p>
+    <div class="row">
+        
+    <div class="col-lg-6">
+    <form action="">
+        <div class="row col-lg-6">
+            <div class="form-group">
+                <div class="input-group-prepend">
+                    <label for="hours">Hours: </label>
+                </div>
+                <input oninput="generateoutput()" id="hours" class="form-control" type="number" name="" placeholder="00">
+                <div class="input-group-append">
+                </div>
+            </div>
+        <div class="form-group">
+            <div class="input-group-prepend">
+                <label for="minutes">Minutes: </label>
+            </div>
+            <input oninput="generateoutput()" id="minutes" class="form-control" type="number" name="minutes" placeholder="00">
+            <div class="input-group-append">
+            </div>
+        </div>
+        <div class="form-group">
+                <div class="input-group-prepend">
+                    <label for="speed">Playback speed: </label>
+                </div>
+                <input id="speed" class="form-control" oninput="generateoutput()" type="number" name="speed" placeholder="x1">
+                <div class="input-group-append">
+                </div>
+        </div>
+    </div>
+    
+
+    </form>
+    </div>
+    <div class="col-lg-6 d-flex align-items-center rightbox" style="font-size: 3rem;">
+        <div class="row">
+            <div id="result_hours" class=" col-xs-6 col-lg-10 leftbox" style="font-size: 3.5rem;">
+                <p>00</p>
+            </div>
+            <div class="col-xs-6 col-lg-2 result_mins  rightbox"  id="result_mins" style="font-size: 3.5rem;">
+                <p>00</p>
+            </div>
+            <div class=" col-xs-6 col-lg-10 resultright leftbox">
+               <p>Hrs</p>
+            </div>
+            <div class="col-xs-6 col-lg-2 resultright rightbox">
+               <p>Mins</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function generateoutput(){
+            let hrs=0,mins=0,speed=1
+            hrs = document.getElementById("hours").value
+            mins = document.getElementById("minutes").value
+            speed=document.getElementById("speed").value
+            if ( hrs!="" && mins!="" && speed!=""){
+                let totalmins = (parseInt(hrs)*60)+parseInt(mins)
+                let reducedtime = parseInt(totalmins/speed)
+                let reducedhrs= parseInt(reducedtime/60)
+                let reducedmins=parseInt(reducedtime%60)    
+                document.getElementById("result_hours").textContent=reducedhrs
+                document.getElementById("result_mins").textContent=reducedmins
+                document.querySelector('.result').style.display="unset"
+            }
+        }
+    </script>
+    </div>
+<!-- </div>
+<div id="spans">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>    
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    </div> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
